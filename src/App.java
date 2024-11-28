@@ -12,7 +12,7 @@ public class App {
         int cenario;
 
 
-
+        for(int i = 0; i<31;i++){
          //Primeiro caso
          cenario = 1;
          System.out.println('\n' + "Primeiro caso: Vetor de inteiros ordenados de forma crescente." + '\n');
@@ -45,12 +45,13 @@ public class App {
          //Quarto caso
          cenario = 4;
          System.out.println('\n' + "Quarto caso: Vetor de strings aleatórias." + '\n');
-         int[] quartoCaso1 = lerArquivo("strings_aleatorias_10000.txt");
-         ordenarNumeros(quartoCaso1, cenario);
-         int[] quartoCaso2 = lerArquivo("strings_aleatorias_100000.txt");
-         ordenarNumeros(quartoCaso2, cenario);
-         int[] quartoCaso3 = lerArquivo("strings_aleatorias_500000.txt");
-         ordenarNumeros(quartoCaso3, cenario);
+         String[] quartoCaso1 = lerArquivoString("strings_aleatorias_10000.txt");
+         ordenarStrings(quartoCaso1, cenario);
+         String[] quartoCaso2 = lerArquivoString("strings_aleatorias_100000.txt");
+         ordenarStrings(quartoCaso2, cenario);
+         String[] quartoCaso3 = lerArquivoString("strings_aleatorias_500000.txt");
+         ordenarStrings(quartoCaso3, cenario);
+        }
 
     }
 
@@ -60,9 +61,9 @@ public class App {
             return;
         }
         int idHardware = 1;
-        metodosOrdenacao.bubbleSort(array, cenario, idHardware);
+
         metodosOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
-        metodosOrdenacao.quickSort(array, 0, array.clone().length-1, cenario, idHardware);
+        metodosOrdenacao.quickSort(array.clone(), 0, array.clone().length-1, cenario, idHardware);
         metodosOrdenacao.shellSort(array.clone(), cenario, idHardware);
     }
 
@@ -72,9 +73,9 @@ public class App {
             return;
         }
         int idHardware = 1;
-        stringOrdenacao.bubbleSort(array, cenario, idHardware);
+
         stringOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
-        stringOrdenacao.quickSort(array, 0, array.clone().length-1, cenario, idHardware);
+        stringOrdenacao.quickSort(array.clone(), 0, array.clone().length-1, cenario, idHardware);
         stringOrdenacao.shellSort(array.clone(), cenario, idHardware);
     }
     
