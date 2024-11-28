@@ -1,6 +1,10 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class stringOrdenacao {
     //Bubble Sort para Strings
-    public static void bubbleSort(String[] array) {
+    public static void bubbleSort(String[] array, int cenario, int id_hardware) {
         long startTime = System.currentTimeMillis();
 
         int n = array.length;
@@ -18,16 +22,44 @@ public class stringOrdenacao {
         } while (swapped);
 
         long endTime = System.currentTimeMillis();
+        long time = endTime - startTime;
+
+        String logEntry = String.format(
+           "INSERT INTO public.resultados(id_hardware, id_algoritmo, cenario, tamanho_amostra, tempo_execucao_microsegundos) " +
+           "VALUES (%d, %d, %d, %d, %d);",
+           id_hardware, 1, cenario, array.length, time
+       );
+
+        writeToFile("resultados.txt", logEntry);
         System.out.println("Bubble Sort levou " + (endTime - startTime) + " ms para " + array.length + " elementos");
     }
+
+     private static void writeToFile(String filename, String content) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
+            writer.write(content);
+            writer.newLine(); 
+        } catch (IOException e) {
+            System.err.println("Erro ao escrever no arquivo: " + e.getMessage());
+        }
+    }
+
     
     // Merge Sort String
-    public static void mergeSort(String[] array, int n) {
+    public static void mergeSort(String[] array, int n,  int cenario, int id_hardware) {
         long startTime = System.currentTimeMillis();
 
         mergeSortHelper(array, n);
 
         long endTime = System.currentTimeMillis();
+        long time = endTime - startTime;
+
+        String logEntry = String.format(
+           "INSERT INTO public.resultados(id_hardware, id_algoritmo, cenario, tamanho_amostra, tempo_execucao_microsegundos) " +
+           "VALUES (%d, %d, %d, %d, %d);",
+           id_hardware, 2, cenario, array.length, time
+       );
+
+       writeToFile("resultados.txt", logEntry);
         System.out.println("Merge Sort levou " + (endTime - startTime) + " ms para " + array.length + " elementos");
     }
 
@@ -71,12 +103,21 @@ public class stringOrdenacao {
     }
 
     // Quick Sort para Strings
-    public static void quickSort(String[] array, int low, int high) {
+    public static void quickSort(String[] array, int low, int high, int cenario, int id_hardware) {
         long startTime = System.currentTimeMillis();
 
         quickSortHelper(array, low, high);
 
         long endTime = System.currentTimeMillis();
+        long time = endTime - startTime;
+
+        String logEntry = String.format(
+           "INSERT INTO public.resultados(id_hardware, id_algoritmo, cenario, tamanho_amostra, tempo_execucao_microsegundos) " +
+           "VALUES (%d, %d, %d, %d, %d);",
+           id_hardware, 3, cenario, array.length, time
+       );
+
+       writeToFile("resultados.txt", logEntry);
         System.out.println("Quick Sort levou " + (endTime - startTime) + " ms para " + array.length + " elementos");
     }
 
@@ -110,7 +151,7 @@ public class stringOrdenacao {
     }
 
      // Shell Sort para Strings
-     public static void shellSort(String[] array) {
+     public static void shellSort(String[] array, int cenario, int id_hardware) {
         long startTime = System.currentTimeMillis();
 
         int n = array.length;
@@ -126,6 +167,15 @@ public class stringOrdenacao {
         }
 
         long endTime = System.currentTimeMillis();
+        long time = endTime - startTime;
+
+        String logEntry = String.format(
+           "INSERT INTO public.resultados(id_hardware, id_algoritmo, cenario, tamanho_amostra, tempo_execucao_microsegundos) " +
+           "VALUES (%d, %d, %d, %d, %d);",
+           id_hardware, 4, cenario, array.length, time
+       );
+
+       writeToFile("resultados.txt", logEntry);
         System.out.println("Shell Sort levou " + (endTime - startTime) + " ms para " + array.length + " elementos\n\n");
     }
 }

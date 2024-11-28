@@ -8,68 +8,74 @@ import java.util.Random;
 
 public class App {
     public static void main(String[] args) {
-        //Primeiro caso
-        System.out.println('\n' + "Primeiro caso: Vetor de inteiros ordenados de forma crescente." + '\n');
-        int[] primeiroCaso1 = lerArquivo("amostra_crescente_10000.txt");
-        ordenarNumeros(primeiroCaso1);
-        int[] primeiroCaso2 = lerArquivo("amostra_crescente_100000.txt");
-        ordenarNumeros(primeiroCaso2);
-        int[] primeiroCaso3 = lerArquivo("amostra_crescente_500000.txt");
-        ordenarNumeros(primeiroCaso3);
-        
-        System.out.println('\n' + "Segundo caso: Vetor de inteiros ordenados de forma decrescente." + '\n');
-        int[] segundoCaso1 = lerArquivo("amostra_decrescente_10000.txt");
-        ordenarNumeros(segundoCaso1);
-        int[] segundoCaso2 = lerArquivo("amostra_decrescente_100000.txt");
-        ordenarNumeros(segundoCaso2);
-        int[] segundoCaso3 = lerArquivo("amostra_decrescente_500000.txt");
-        ordenarNumeros(segundoCaso3);
-        
-        //Terceiro caso
-        System.out.println('\n' + "Terceiro caso: Vetor de inteiros aleatórios." + '\n');
-        int[] terceiroCaso1 = lerArquivo("amostra_aleatoria_10000.txt");
-        ordenarNumeros(terceiroCaso1);
+
+        int cenario;
 
 
-        int[] terceiroCaso2 = lerArquivo("amostra_aleatoria_100000.txt");
-        ordenarNumeros(terceiroCaso2);
 
-        int[] terceiroCaso3 = lerArquivo("amostra_aleatoria_500000.txt");
-        ordenarNumeros(terceiroCaso3);
+         //Primeiro caso
+         cenario = 1;
+         System.out.println('\n' + "Primeiro caso: Vetor de inteiros ordenados de forma crescente." + '\n');
+         int[] primeiroCaso1 = lerArquivo("amostra_crescente_10000.txt");
+         ordenarNumeros(primeiroCaso1, cenario);
+         int[] primeiroCaso2 = lerArquivo("amostra_crescente_100000.txt");
+         ordenarNumeros(primeiroCaso2, cenario);
+         int[] primeiroCaso3 = lerArquivo("amostra_crescente_500000.txt");
+         ordenarNumeros(primeiroCaso3, cenario);
+         
+         System.out.println('\n' + "Segundo caso: Vetor de inteiros ordenados de forma decrescente." + '\n');
+         cenario = 2;
+         int[] segundoCaso1 = lerArquivo("amostra_decrescente_10000.txt");
+         ordenarNumeros(segundoCaso1, cenario);
+         int[] segundoCaso2 = lerArquivo("amostra_decrescente_100000.txt");
+         ordenarNumeros(segundoCaso2,cenario);
+         int[] segundoCaso3 = lerArquivo("amostra_decrescente_500000.txt");
+         ordenarNumeros(segundoCaso3, cenario);
+         
+         //Terceiro caso
+         cenario = 3;
+         System.out.println('\n' + "Terceiro caso: Vetor de inteiros aleatórios." + '\n');
+         int[] terceiroCaso1 = lerArquivo("amostra_aleatoria_10000.txt");
+         ordenarNumeros(terceiroCaso1, cenario);
+         int[] terceiroCaso2 = lerArquivo("amostra_aleatoria_100000.txt");
+         ordenarNumeros(terceiroCaso2, cenario);
+         int[] terceiroCaso3 = lerArquivo("amostra_aleatoria_500000.txt");
+         ordenarNumeros(terceiroCaso3, cenario);
 
-        //Quarto caso
-        System.out.println('\n' + "Quarto caso: Vetor de strings aleatórias." + '\n');
-        String[] quartoCaso1 = lerArquivoString("strings_aleatorias_10000.txt");
-        ordenarStrings(quartoCaso1);
-
-        String[] quartoCaso2 = lerArquivoString("strings_aleatorias_100000.txt");
-        ordenarStrings(quartoCaso2);
-
-        String[] quartoCaso3 = lerArquivoString("strings_aleatorias_500000.txt");
-        ordenarStrings(quartoCaso3);
-        
+         //Quarto caso
+         cenario = 4;
+         System.out.println('\n' + "Quarto caso: Vetor de strings aleatórias." + '\n');
+         int[] quartoCaso1 = lerArquivo("strings_aleatorias_10000.txt");
+         ordenarNumeros(quartoCaso1, cenario);
+         int[] quartoCaso2 = lerArquivo("strings_aleatorias_100000.txt");
+         ordenarNumeros(quartoCaso2, cenario);
+         int[] quartoCaso3 = lerArquivo("strings_aleatorias_500000.txt");
+         ordenarNumeros(quartoCaso3, cenario);
 
     }
 
-    public static void ordenarNumeros(int[] array){
+    public static void ordenarNumeros(int[] array, int cenario){
         if (array == null) {
             System.err.println("Erro ao carregar o arquivo.");
             return;
         }
-        metodosOrdenacao.bubbleSort(array.clone());
-        metodosOrdenacao.mergeSort(array.clone(), array.clone().length);
-        metodosOrdenacao.shellSort(array.clone());
+        int idHardware = 1;
+        metodosOrdenacao.bubbleSort(array, cenario, idHardware);
+        metodosOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
+        metodosOrdenacao.quickSort(array, 0, array.clone().length-1, cenario, idHardware);
+        metodosOrdenacao.shellSort(array.clone(), cenario, idHardware);
     }
 
-    public static void ordenarStrings(String[] array){
+    public static void ordenarStrings(String[] array, int cenario){
         if (array == null) {
             System.err.println("Erro ao carregar o arquivo.");
             return;
         }
-        stringOrdenacao.bubbleSort(array.clone());
-        stringOrdenacao.quickSort(array, 0, array.clone().length-1);
-        stringOrdenacao.mergeSort(array.clone(), array.clone().length);
-        stringOrdenacao.shellSort(array.clone());
+        int idHardware = 1;
+        stringOrdenacao.bubbleSort(array, cenario, idHardware);
+        stringOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
+        stringOrdenacao.quickSort(array, 0, array.clone().length-1, cenario, idHardware);
+        stringOrdenacao.shellSort(array.clone(), cenario, idHardware);
     }
     
     public static int[] lerArquivo(String fileName) {
