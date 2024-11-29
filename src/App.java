@@ -60,7 +60,7 @@ public class App {
             System.err.println("Erro ao carregar o arquivo.");
             return;
         }
-        int idHardware = 1;
+        int idHardware = 4;
 
         metodosOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
         metodosOrdenacao.quickSort(array.clone(), 0, array.clone().length-1, cenario, idHardware);
@@ -72,7 +72,7 @@ public class App {
             System.err.println("Erro ao carregar o arquivo.");
             return;
         }
-        int idHardware = 1;
+        int idHardware = 4;
 
         stringOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
         stringOrdenacao.quickSort(array.clone(), 0, array.clone().length-1, cenario, idHardware);
