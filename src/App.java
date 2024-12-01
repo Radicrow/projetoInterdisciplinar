@@ -12,7 +12,7 @@ public class App {
         int cenario;
 
 
-        for(int i = 0; i<31;i++){
+        for(int i = 0; i<5;i++){
          //Primeiro caso
          cenario = 1;
          System.out.println('\n' + "Primeiro caso: Vetor de inteiros ordenados de forma crescente." + '\n');
@@ -62,9 +62,10 @@ public class App {
         }
         int idHardware = 4;
 
-        metodosOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
+        /*metodosOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
         metodosOrdenacao.quickSort(array.clone(), 0, array.clone().length-1, cenario, idHardware);
-        metodosOrdenacao.shellSort(array.clone(), cenario, idHardware);
+        metodosOrdenacao.shellSort(array.clone(), cenario, idHardware);*/
+        metodosOrdenacao.bubbleSort(array.clone(), cenario, idHardware);
     }
 
     public static void ordenarStrings(String[] array, int cenario){
@@ -74,9 +75,10 @@ public class App {
         }
         int idHardware = 4;
 
-        stringOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
+        /*stringOrdenacao.mergeSort(array.clone(), array.clone().length, cenario, idHardware);
         stringOrdenacao.quickSort(array.clone(), 0, array.clone().length-1, cenario, idHardware);
-        stringOrdenacao.shellSort(array.clone(), cenario, idHardware);
+        stringOrdenacao.shellSort(array.clone(), cenario, idHardware);*/
+        stringOrdenacao.bubbleSort(array.clone(), cenario, idHardware);
     }
     
     public static int[] lerArquivo(String fileName) {
