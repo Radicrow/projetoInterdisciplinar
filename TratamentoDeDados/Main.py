@@ -4,6 +4,7 @@ import psycopg2
 import pandas as pd
 import numpy as np
 import scipy
+import openpyxl as xl
 
 
 
@@ -82,4 +83,6 @@ calculosEstastisticos(df_merge, 'Merge Sort')
 calculosEstastisticos(df_shell, 'Shell Sort')
 calculosEstastisticos(df_bubble, 'Bubble Sort')
 
-print(df_geral)
+excel_file_path = "Excel/dados-tratados.xlsx"
+df_geral.to_excel(excel_file_path, index=False)
+print(f"Arquivo Excel salvo em: {excel_file_path}")
