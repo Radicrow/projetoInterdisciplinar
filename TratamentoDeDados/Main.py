@@ -25,7 +25,7 @@ cur.execute("SELECT * FROM hardware;")
 
 hardwares = cur.fetchall()
 
-#print(hardwares)
+conexao.close()
 
 cur.execute("SELECT * FROM resultados_v;")
 
@@ -36,19 +36,12 @@ df_geral = pd.DataFrame(resultados, columns=colunas)
 df_geral['Intervalos de confiança'] = None
 df_geral['Média'] = None
 df_geral['Desvio padrão'] = None
-#print(df_geral)
+
 
 df_quick = df_geral[df_geral['nome_algoritmo'] == 'Quick Sort']
 df_merge = df_geral[df_geral['nome_algoritmo'] == 'Merge Sort']
 df_shell = df_geral[df_geral['nome_algoritmo'] == 'Shell Sort']
 df_bubble = df_geral[df_geral['nome_algoritmo'] == 'Bubble Sort']
-
-df_quick_1_cenario_10000 = df_quick[(df_quick['tamanho_amostra'] == 10000) & (df_quick['cenario'] == 1)]
-
-#print(df_quick_1_cenario_10000)
-
-
-#print(intervalo)
 
 def calculosEstastisticos(df_generico, algoritmo):
     valores = [10000, 100000, 500000]
