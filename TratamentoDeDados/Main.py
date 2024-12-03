@@ -12,31 +12,26 @@ pd.options.display.width = 0
 pd.set_option('display.max_rows', None)
 
 conexao = psycopg2.connect(
-    database='algoritmo',
-    host='localhost',
-    user='postgres',
-    password='1234',
-    port=5432
+    database='postgres',
+    host='aws-0-us-west-1.pooler.supabase.com',
+    user='postgres.roeduggwhnbpdkhkxkxf',
+    password='IVHxFVBenUk3h7a2',
+    port=6543
 )
 
 cur = conexao.cursor()
-
-cur.execute("SELECT * FROM hardware;")
-
-hardwares = cur.fetchall()
-
-conexao.close()
 
 cur.execute("SELECT * FROM resultados_v;")
 
 resultados = cur.fetchall()
 
-colunas = [desc[0] for desc in cur.description]  # Obtém os nomes das colunas
+conexao.close()
+
+colunas = [desc[0] for desc in cur.description]  
 df_geral = pd.DataFrame(resultados, columns=colunas)
 df_geral['Intervalos de confiança'] = None
 df_geral['Média'] = None
 df_geral['Desvio padrão'] = None
-
 
 df_quick = df_geral[df_geral['nome_algoritmo'] == 'Quick Sort']
 df_merge = df_geral[df_geral['nome_algoritmo'] == 'Merge Sort']
@@ -79,3 +74,7 @@ calculosEstastisticos(df_bubble, 'Bubble Sort')
 excel_file_path = "Excel/dados-tratados.xlsx"
 df_geral.to_excel(excel_file_path, index=False)
 print(f"Arquivo Excel salvo em: {excel_file_path}")
+
+csv_file_path = "Csv/meus_dados.csv"
+df_geral.to_csv(csv_file_path, index=False, sep=',')  # index=False evita salvar o índice
+print(f"Arquivo CSV salvo com sucesso em: {csv_file_path}")
