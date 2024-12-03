@@ -75,6 +75,6 @@ excel_file_path = "Excel/dados-tratados.xlsx"
 df_geral.to_excel(excel_file_path, index=False)
 print(f"Arquivo Excel salvo em: {excel_file_path}")
 
-csv_file_path = "Csv/meus_dados.csv"
-df_geral.to_csv(csv_file_path, index=False, sep=',')  # index=False evita salvar o índice
+csv_file_path = "Csv/dados-tratados.csv"
+df_geral.to_csv(csv_file_path, index=False, sep=',')  
 print(f"Arquivo CSV salvo com sucesso em: {csv_file_path}")
