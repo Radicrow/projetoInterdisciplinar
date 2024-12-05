@@ -1,0 +1,25 @@
+CREATE TABLE hardware (
+    id_hardware SERIAL PRIMARY KEY,
+    processador VARCHAR(100) NOT NULL,
+    ram VARCHAR(50) NOT NULL,
+    sistema_operacional VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE algoritmo(
+id_algoritmo INT PRIMARY KEY,
+nome_algoritmo VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE resultados (
+    id SERIAL PRIMARY KEY,
+    id_hardware INT REFERENCES hardware(id_hardware),
+    id_algoritmo INT REFERENCES algoritmo(id_algoritmo),
+    cenario INT CHECK (cenario BETWEEN 1 AND 4),
+    tamanho_amostra INT NOT NULL,
+    tempo_execucao_microsegundos INT NOT NULL
+);
+
+CREATE OR REPLACE VIEW resultados_v AS
+SELECT algoritmo.nome_algoritmo, resultados.cenario, resultados.tamanho_amostra, resultados.tempo_execucao_microsegundos, hardware.id_hardware ,hardware.processador, hardware.ram, hardware.sistema_operacional FROM resultados
+JOIN hardware ON (hardware.id_hardware = resultados.id_hardware) 
+JOIN algoritmo ON (algoritmo.id_algoritmo = resultados.id_algoritmo);
