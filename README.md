@@ -1,5 +1,5 @@
 # Projeto Interdisciplinar - Análise de algoritmos de ordenação
-##### Este projeto foi desenvolvido a partir da junção de disciplinas ministrada pelos docentes Girotto, Isaac e Suzane. O objetivo é tratar e fazer uma análise dos dados dos tempos de algoritmos de ordenação com foco na análise de dados projetada pelo software PowerBI.
+##### Este projeto foi desenvolvido a partir da junção de disciplinas ministrada pelos docentes Isaac Souza Elgrably, Pedro Henrique Sales Girotto e Suzane Alfaia Dias. O objetivo é tratar e fazer uma análise dos dados dos tempos de algoritmos de ordenação com foco na análise de dados projetada pelo software PowerBI.
 
 # FEATURES 
 ##### PowerBI:
