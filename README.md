@@ -26,7 +26,7 @@
 
 ##### Java 21:
 - ##### Biblioteca Java.util
-- ##### Biblioteca Java.io|
+- ##### Biblioteca Java.io
 
 # COMO EXECUTAR
 - ##### Use o git clone para pegar o arquivo do programa
